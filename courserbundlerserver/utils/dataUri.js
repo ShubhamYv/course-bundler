@@ -9,4 +9,3 @@ const getDataUri = (file) => {
 };
 
 export default getDataUri;
-  

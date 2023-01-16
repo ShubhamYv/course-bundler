@@ -27,6 +27,8 @@ router
   .post(isAuthenticated, authorizedAdmin, singleUpload, addLecture)
   .delete(isAuthenticated, authorizedAdmin, deleteCourse);
 
+// router.route("/course/:id").get(getCourseLectures)
+
 // delete lecture
 router
   .route("/lecture")
