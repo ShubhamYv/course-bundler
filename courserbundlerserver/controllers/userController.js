@@ -7,6 +7,7 @@ import crypto from "crypto";
 import { Course } from "../models/Course.js";
 import cloudinary from "cloudinary";
 import getDataUri from "../utils/dataUri.js";
+import { Stats } from "../models/Stats.js";
 
 // REGISTER
 export const register = catchAsyncError(async (req, res, next) => {
@@ -138,7 +139,7 @@ export const updateProfilePicture = catchAsyncError(async (req, res, next) => {
 export const forgetPassword = catchAsyncError(async (req, res, next) => {
   const { email } = req.body;
 
-  const user = await User.findById({ email });
+  const user = await User.findOne({ email });
   if (!user) return next(new ErrorHandler("User Not Found...", 400));
 
   const resetToken = await user.getResetToken();
@@ -279,7 +280,6 @@ export const deleteMyProfile = catchAsyncError(async (req, res, next) => {
   await cloudinary.v2.uploader.destroy(user.avatar.public_id);
 
   // Cancel Subscription
-
   await user.remove();
   res
     .status(200)
@@ -292,4 +292,11 @@ export const deleteMyProfile = catchAsyncError(async (req, res, next) => {
     });
 });
 
-
+// User.watch().on("change", async () => {
+//   const stats = await Stats.find({}).sort({ createdAt: "desc" }).limit(1);
+//   const subscription = await User.find({ "subscription.status": "active" });
+//   stats[0].users = await User.countDocuments;
+//   stats[0].subscription = subscription.length;
+//   stats[0].createdAt = new Date(Date.now());
+//   await stats.save()
+// });
