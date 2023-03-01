@@ -1,0 +1,19 @@
+{
+  "name": "corsebundler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShubhamYv/course-bundler.git"
+  },
+  "author": "shubham yadav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShubhamYv/course-bundler/issues"
+  },
+  "homepage": "https://github.com/ShubhamYv/course-bundler#readme"
+}
